@@ -2,6 +2,7 @@ import pandas as pd # type: ignore
 from datetime import datetime
 import customtkinter as ctk
 from customtkinter import filedialog
+from tkinter import messagebox
 import winreg
 import zipfile
 from pptx import Presentation
@@ -42,12 +43,12 @@ class App(ctk.CTk):
             for row,data in enumerate(values):
                 combobox = ctk.CTkOptionMenu(self,values=TYPE)
                 combobox2 = ctk.CTkOptionMenu(self,values=F_type)
-                button=ctk.CTkButton(self,text="X",command= lambda: self.removedata())
+                # button=ctk.CTkButton(self,text="X",command= lambda: self.removedata())
                 label = ctk.CTkLabel(self, text=data)
                 label.grid(row=row, column=0, padx=10, pady=(10, 0), sticky="w")
                 combobox.grid(row=row, column=1, padx=10, pady=(10, 0), sticky="w")
                 combobox2.grid(row=row, column=2, padx=10, pady=(10, 0), sticky="w")
-                button.grid(row=row, column=3, padx=10, pady=(10, 0), sticky="w")
+                # button.grid(row=row, column=3, padx=10, pady=(10, 0), sticky="w")
                 self.rows.append({'label':label,'combo':combobox,'folder':combobox2})
 
         def get(self):
@@ -135,6 +136,9 @@ class App(ctk.CTk):
         num_pages = len(imgs)
 
         print('\033[91m'+'output_pdf: ' + '\033[92m', output_pdf)
+        # ctk.CTkFrame(master=app, text='Conversion Completed')
+        messagebox.showinfo("Conversion Completed", "The conversion process has been successfully completed.")
+
         imgs.clear()
 
         self.log_conversion_info(source_folder, output_pdf, '.pdf', num_pages, conversion_time.total_seconds())
@@ -249,6 +253,9 @@ class App(ctk.CTk):
             elif f_type == 'PPT':  # New option for PPT conversion
                 output_ppt_path = join(output, title + '.pptx')
                 self.create_ppt_from_folder(dst, output_ppt_path)
+                messagebox.showinfo("Conversion Completed", "The conversion process has been successfully completed.")
+
+
 if __name__=='__main__':
     app = App()
     app.mainloop()

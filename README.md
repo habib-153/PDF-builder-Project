@@ -1,5 +1,5 @@
 # PDF-builder
-<p>This ia python project. It is also a team project. This Project is for <b>Object Oriented Programming for Data Science Laboratory</b> Course.<p> 
+<p>This is a python project. It is also a team project. This Project is for <b>Object Oriented Programming for Data Science Laboratory</b> Course.<p> 
 
 ### Here is Our Team members:-
 - Habibur Rahman, **ID :** 0152330118
